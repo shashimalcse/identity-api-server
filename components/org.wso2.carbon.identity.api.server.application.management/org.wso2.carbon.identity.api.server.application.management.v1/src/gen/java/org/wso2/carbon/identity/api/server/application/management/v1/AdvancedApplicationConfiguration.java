@@ -41,11 +41,12 @@ public class AdvancedApplicationConfiguration  {
     private Certificate certificate;
     private Boolean skipLoginConsent;
     private Boolean skipLogoutConsent;
+    private Boolean useExternalConsentPage;
     private Boolean returnAuthenticatedIdpList;
     private Boolean enableAuthorization;
     private Boolean fragment;
     private List<AdditionalSpProperty> additionalSpProperties = null;
-    private Boolean useExternalConsentPage;
+
 
     /**
     * Decides whether the application is accessible across tenants.
@@ -111,7 +112,7 @@ public class AdvancedApplicationConfiguration  {
         this.skipLoginConsent = skipLoginConsent;
         return this;
     }
-
+    
     @ApiModelProperty(example = "false", value = "Decides whether user consent needs to be skipped during login flows.")
     @JsonProperty("skipLoginConsent")
     @Valid
@@ -130,7 +131,7 @@ public class AdvancedApplicationConfiguration  {
         this.skipLogoutConsent = skipLogoutConsent;
         return this;
     }
-
+    
     @ApiModelProperty(example = "false", value = "Decides whether user consent needs to be skipped during logout flows.")
     @JsonProperty("skipLogoutConsent")
     @Valid
@@ -142,14 +143,14 @@ public class AdvancedApplicationConfiguration  {
     }
 
     /**
-     * Decides whether user needs to use external consent page.
-     **/
+    * Decides whether user needs to use external consent page.
+    **/
     public AdvancedApplicationConfiguration useExternalConsentPage(Boolean useExternalConsentPage) {
 
         this.useExternalConsentPage = useExternalConsentPage;
         return this;
     }
-
+    
     @ApiModelProperty(example = "false", value = "Decides whether user needs to use external consent page.")
     @JsonProperty("useExternalConsentPage")
     @Valid

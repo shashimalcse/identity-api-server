@@ -36,6 +36,7 @@ public class ApplicationManagementConstants {
 
     private static final String APPLICATION_MANAGEMENT_PREFIX = "APP-";
     public static final String APPLICATION_MANAGEMENT_PATH_COMPONENT = "/applications";
+    public static final String ROLES_PATH_COMPONENT = "/roles";
     public static final String APPLICATION_TEMPLATE_MANAGEMENT_PATH_COMPONENT = "/templates";
     public static final String INBOUND_PROTOCOLS_PATH_COMPONENT = "/inbound-protocols";
     public static final String INBOUND_PROTOCOL_OAUTH2_PATH_COMPONENT = "/oidc";
@@ -53,6 +54,15 @@ public class ApplicationManagementConstants {
     public static final String ISSUER = "issuer";
 
     public static final String NON_EXISTING_USER_CODE = "30007 - ";
+
+    public static final String URL_SEPERATOR = "/";
+    public static final String TENANT_URL_SEPERATOR = "/t/";
+    public static final String SCIM2_ENDPOINT = "/scim2";
+
+    public static final String USERS = "/Users";
+    public static final String GROUPS = "/Groups";
+
+    public static final String LOCAL_IDP = "LOCAL";
 
     /**
      * Enums for error messages.

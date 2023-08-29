@@ -263,13 +263,15 @@ public enum AccessEnum {
         this.isB2BSelfServiceApp = isB2BSelfServiceApp;
         return this;
     }
-
+    
     @ApiModelProperty(example = "false", value = "Decides whether the application used to for B2B self service")
     @JsonProperty("isB2BSelfServiceApp")
     @Valid
     public Boolean getIsB2BSelfServiceApp() {
-
         return isB2BSelfServiceApp;
+    }
+    public void setIsB2BSelfServiceApp(Boolean isB2BSelfServiceApp) {
+        this.isB2BSelfServiceApp = isB2BSelfServiceApp;
     }
 
     /**

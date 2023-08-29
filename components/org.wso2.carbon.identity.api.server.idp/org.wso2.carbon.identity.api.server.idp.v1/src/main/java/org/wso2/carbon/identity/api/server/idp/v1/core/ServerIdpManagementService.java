@@ -3620,7 +3620,7 @@ public class ServerIdpManagementService {
         StringBuilder fileNameSB = new StringBuilder(identityProvider.getIdentityProviderName());
         fileNameSB.append(YAML_FILE_EXTENSION);
 
-        Representer representer = new Representer();
+        Representer representer = new Representer(null);
         TypeDescription typeDescription = new TypeDescription(IdentityProvider.class);
         typeDescription.setExcludes("id", "resourceId");
         representer.addTypeDescription(typeDescription);
@@ -3694,7 +3694,7 @@ public class ServerIdpManagementService {
             throws IdentityProviderManagementClientException {
 
         try {
-            Yaml yaml = new Yaml(new Constructor(IdentityProvider.class));
+            Yaml yaml = new Yaml(new Constructor(IdentityProvider.class, null));
             return yaml.loadAs(fileContent.getContent(), IdentityProvider.class);
         } catch (YAMLException e) {
             throw new IdentityProviderManagementClientException(String.format("Error in reading YAML file " +

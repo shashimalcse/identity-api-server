@@ -1154,7 +1154,7 @@ public class ServerClaimManagementService {
     private ClaimDialectConfiguration parseClaimDialectFromYaml(FileContent fileContent) throws ClaimMetadataException {
 
         try {
-            Yaml yaml = new Yaml(new Constructor(ClaimDialectConfiguration.class));
+            Yaml yaml = new Yaml(new Constructor(ClaimDialectConfiguration.class, null));
             return yaml.loadAs(fileContent.getContent(), ClaimDialectConfiguration.class);
         } catch (YAMLException e) {
             throw new ClaimMetadataException(String.format(

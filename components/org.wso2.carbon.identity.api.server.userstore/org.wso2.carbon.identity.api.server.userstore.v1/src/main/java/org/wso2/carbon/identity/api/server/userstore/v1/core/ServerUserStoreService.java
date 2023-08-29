@@ -1660,7 +1660,7 @@ public class ServerUserStoreService {
     private UserStoreConfigurations parseUserStoreFromYaml(FileContent fileContent) throws UserStoreException {
 
         try {
-            Yaml yaml = new Yaml(new Constructor(UserStoreConfigurations.class));
+            Yaml yaml = new Yaml(new Constructor(UserStoreConfigurations.class, null));
             return yaml.loadAs(fileContent.getContent(), UserStoreConfigurations.class);
         } catch (YAMLException e) {
             throw new UserStoreException(String.format("Error in reading YAML file " +

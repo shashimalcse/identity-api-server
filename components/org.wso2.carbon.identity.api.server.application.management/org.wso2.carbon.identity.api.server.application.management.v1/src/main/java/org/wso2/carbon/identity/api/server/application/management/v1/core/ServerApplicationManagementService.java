@@ -551,8 +551,8 @@ public class ServerApplicationManagementService {
 
     private String parseYamlFromServiceProvider(ServiceProvider serviceProvider) {
 
-        Constructor constructor = new Constructor();
-        CustomRepresenter representer = new CustomRepresenter();
+        Constructor constructor = new Constructor(null);
+        CustomRepresenter representer = new CustomRepresenter(null);
 
         for (Class<?> protocol : INBOUND_CONFIG_PROTOCOLS) {
             TypeDescription description = new TypeDescription(InboundConfigurationProtocol.class);
@@ -684,7 +684,7 @@ public class ServerApplicationManagementService {
             throws IdentityApplicationManagementException {
 
         try {
-            Yaml yaml = new Yaml(new Constructor(ServiceProvider.class));
+            Yaml yaml = new Yaml(new Constructor(ServiceProvider.class, null));
             return yaml.loadAs(spFileContent.getContent(), ServiceProvider.class);
         } catch (YAMLException e) {
             throw new IdentityApplicationManagementException(String.format("Error in reading YAML Service Provider " +

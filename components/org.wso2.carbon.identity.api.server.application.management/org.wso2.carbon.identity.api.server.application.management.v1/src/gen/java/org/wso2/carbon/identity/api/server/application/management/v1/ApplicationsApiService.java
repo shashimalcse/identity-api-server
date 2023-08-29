@@ -18,38 +18,10 @@
 
 package org.wso2.carbon.identity.api.server.application.management.v1;
 
-import org.apache.cxf.jaxrs.ext.search.SearchContext;
-import org.wso2.carbon.identity.api.server.application.management.v1.*;
-import org.wso2.carbon.identity.api.server.application.management.v1.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
-import org.apache.cxf.jaxrs.ext.multipart.Multipart;
+import org.apache.cxf.jaxrs.ext.search.SearchContext;
+
 import java.io.InputStream;
-import java.util.List;
-import org.wso2.carbon.identity.api.server.application.management.v1.AdaptiveAuthTemplates;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationListResponse;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationModel;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationOwner;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationPatchModel;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationResponseModel;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationTemplateModel;
-import org.wso2.carbon.identity.api.server.application.management.v1.ApplicationTemplatesList;
-import org.wso2.carbon.identity.api.server.application.management.v1.AuthProtocolMetadata;
-import org.wso2.carbon.identity.api.server.application.management.v1.ConfiguredAuthenticatorsModal;
-import org.wso2.carbon.identity.api.server.application.management.v1.CustomInboundProtocolConfiguration;
-import org.wso2.carbon.identity.api.server.application.management.v1.CustomInboundProtocolMetaData;
-import org.wso2.carbon.identity.api.server.application.management.v1.Error;
-import java.io.File;
-import org.wso2.carbon.identity.api.server.application.management.v1.InboundProtocolListItem;
-import org.wso2.carbon.identity.api.server.application.management.v1.OIDCMetaData;
-import org.wso2.carbon.identity.api.server.application.management.v1.OpenIDConnectConfiguration;
-import org.wso2.carbon.identity.api.server.application.management.v1.PassiveStsConfiguration;
-import org.wso2.carbon.identity.api.server.application.management.v1.ProvisioningConfiguration;
-import org.wso2.carbon.identity.api.server.application.management.v1.ResidentApplication;
-import org.wso2.carbon.identity.api.server.application.management.v1.SAML2Configuration;
-import org.wso2.carbon.identity.api.server.application.management.v1.SAML2ServiceProvider;
-import org.wso2.carbon.identity.api.server.application.management.v1.SAMLMetaData;
-import org.wso2.carbon.identity.api.server.application.management.v1.WSTrustConfiguration;
-import org.wso2.carbon.identity.api.server.application.management.v1.WSTrustMetaData;
 import javax.ws.rs.core.Response;
 
 
@@ -57,9 +29,13 @@ public interface ApplicationsApiService {
 
       public Response changeApplicationOwner(String applicationId, ApplicationOwner applicationOwner);
 
+      public Response createAppRole(String applicationId, RoleCreationModel roleCreationModel);
+
       public Response createApplication(ApplicationModel applicationModel, String template);
 
       public Response createApplicationTemplate(ApplicationTemplateModel applicationTemplateModel);
+
+      public Response deleteAppRole(String applicationId, String roleId);
 
       public Response deleteApplication(String applicationId);
 
@@ -81,9 +57,15 @@ public interface ApplicationsApiService {
 
       public Response getAdaptiveAuthTemplates();
 
-      public Response getAllApplicationTemplates(Integer limit, Integer offset, SearchContext searchContext);
+      public Response getAllAppRoles(String applicationId, String before, String after);
 
       public Response getAllApplications(Integer limit, Integer offset, String filter, String sortOrder, String sortBy, String attributes);
+
+      public Response getAppRole(String applicationId, String roleId);
+
+      public Response getAppRoleGroups(String applicationId, String roleId, String idpId);
+
+      public Response getAppRoleUsers(String applicationId, String roleId);
 
       public Response getApplication(String applicationId);
 
@@ -119,6 +101,12 @@ public interface ApplicationsApiService {
 
       public Response importApplicationForUpdate(InputStream fileInputStream, Attachment fileDetail);
 
+      public Response patchAppRole(String applicationId, String roleId, RolePatchModel rolePatchModel);
+
+      public Response patchAppRoleAssignedGroups(String applicationId, String roleId, String idpId, RoleAssignPatchModel roleAssignPatchModel);
+
+      public Response patchAppRoleAssignedUsers(String applicationId, String roleId, RoleAssignPatchModel roleAssignPatchModel);
+
       public Response patchApplication(String applicationId, ApplicationPatchModel applicationPatchModel);
 
       public Response regenerateOAuthClientSecret(String applicationId);
@@ -138,4 +126,6 @@ public interface ApplicationsApiService {
       public Response updateResidentApplication(ProvisioningConfiguration provisioningConfiguration);
 
       public Response updateWSTrustConfiguration(String applicationId, WSTrustConfiguration wsTrustConfiguration);
+
+      public Response getAllApplicationTemplates(Integer limit, Integer offset, SearchContext searchContext);
 }
